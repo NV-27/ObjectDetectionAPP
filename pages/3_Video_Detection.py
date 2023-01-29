@@ -62,25 +62,15 @@ if uploaded_file:
 
 if uploaded_file:
     start_detection = st.sidebar.checkbox("Запустить детекцию объектов.")
-    #st.write(model_size)
-    #st.write(uploaded_file)
-    #st.write(os.listdir("./Documents/"))
     try:
         os.mkdir("./video/")
     except FileExistsError:
         pass
 
-    #st.write(os.listdir("./"))
-    #st.write(os.listdir("./video/"))
-
     with open("./video/video_for_detect.mp4", mode='wb') as w:
         w.write(uploaded_file.getvalue())
 
     detector = VideoObjectDetection()
-    st.title("Model Loading")
-    st.title(os.listdir("../"))
-    st.title(os.listdir("./"))
-    st.title(os.listdir("./models/"))
     if model_size == "TinyYOLOv3":
         detector.setModelTypeAsTinyYOLOv3()
         detector.setModelPath(
@@ -96,8 +86,6 @@ if uploaded_file:
         detector.setModelPath(
             "./models/retinanet_resnet50_fpn_coco-eeacb38b.pth"
         )
-
-    st.title("Model LOADED!!!")
     detector.loadModel()
     execution_path = "./video/"
     
@@ -114,5 +102,3 @@ if uploaded_file:
     st.video(
         f"{execution_path}/video_detected.mp4"
     )
-    
-    
