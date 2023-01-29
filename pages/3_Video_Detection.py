@@ -80,20 +80,21 @@ if uploaded_file:
     st.title("Model Loading")
     st.title(os.listdir("../"))
     st.title(os.listdir("./"))
+    st.title(os.listdir("./models/"))
     if model_size == "TinyYOLOv3":
         detector.setModelTypeAsTinyYOLOv3()
         detector.setModelPath(
-            "../models/tiny-yolov3.pt"
+            "./models/tiny-yolov3.pt"
         )
     elif model_size == "YOLOv3":
         detector.setModelTypeAsYOLOv3()
         detector.setModelPath(
-            "../models/yolov3.pt"
+            "./models/yolov3.pt"
         )
     elif model_size == "RetinaNet":
         detector.setModelTypeAsRetinaNet()
         detector.setModelPath(
-            "../models/retinanet_resnet50_fpn_coco-eeacb38b.pth"
+            "./models/retinanet_resnet50_fpn_coco-eeacb38b.pth"
         )
 
     st.title("Model LOADED!!!")
