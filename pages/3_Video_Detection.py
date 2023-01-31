@@ -4,8 +4,6 @@ import cv2
 import base64
 import tempfile
 sys.path.append("../")
-st.text(os.listdir("../"))
-st.text(os.listdir("./"))
 
 import numpy as np
 import streamlit as st
@@ -15,8 +13,9 @@ from pathlib import Path
 from PIL import Image
 from utils import convert_video
 
-
 st.title("Детекция на видео 📹")
+st.text(os.listdir("../"))
+st.text(os.listdir("./"))
 
 st.markdown("----------------------------")
 st.markdown("### Инструкция по применению")
