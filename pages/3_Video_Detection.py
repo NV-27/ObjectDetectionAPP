@@ -4,6 +4,8 @@ import cv2
 import base64
 import tempfile
 sys.path.append("../")
+st.text(os.listdir("../"))
+st.text(os.listdir("./"))
 
 import numpy as np
 import streamlit as st
