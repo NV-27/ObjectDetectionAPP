@@ -31,6 +31,7 @@ def convert_video(input_path, output_path):
     st.write("success")
     cap.release()
     out.release()
+    st.write("success 2")
 
 
 st.title("Детекция на видео 📹")
@@ -94,7 +95,7 @@ if uploaded_file:
     if model_size == "TinyYOLOv3":
         detector.setModelTypeAsTinyYOLOv3()
         detector.setModelPath(
-            "./models/tiny-yolov3.pt"
+            "/Users/nv27/Documents/Lovely ML/courses/DL School, part I/ObjectDetectionAPP/models/tiny-yolov3.pt"
         )
     elif model_size == "YOLOv3":
         st.write("В бесплатной версии приложения этот тип модели не поддерживается 🙂")
@@ -122,6 +123,7 @@ if uploaded_file:
         display_percentage_probability=True,
         log_progress=True,
     )
+    st.write(os.listdir("./video/"))
     convert_video(
         input_path=os.path.join(execution_path, f"video_detected.mp4"),
         output_path="./video/video_detected_h264.mp4",
