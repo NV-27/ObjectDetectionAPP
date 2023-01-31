@@ -13,9 +13,9 @@ from pathlib import Path
 from PIL import Image
 
 try:
-    from .utils import convert_video
-except ImportError:
     from utils import convert_video
+except ImportError:
+    from ..utils import convert_video
 
 st.title("Детекция на видео 📹")
 st.text(os.listdir("../"))
