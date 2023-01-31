@@ -20,7 +20,7 @@ st.text(os.listdir("./"))
 try:
     from utils import convert_video
 except ImportError:
-    from ..utils import convert_video
+    from .utils import convert_video
 
 st.markdown("----------------------------")
 st.markdown("### Инструкция по применению")
