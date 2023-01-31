@@ -13,15 +13,24 @@ from imageai.Detection import VideoObjectDetection
 from pathlib import Path
 from PIL import Image
 
-st.text(os.listdir("../"))
+def convert_video(input_path, output_path):
+    cap = cv2.VideoCapture(input_path)
+    fourcc = cv2.VideoWriter_fourcc(*"H264")
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    out = cv2.VideoWriter(output_path, fourcc, fps, (frame_width, frame_height))
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        out.write(frame)
+    cap.release()
+    out.release()
+
+
 st.title("Детекция на видео 📹")
-st.text(os.listdir("./"))
-
-try:
-    from utils import convert_video
-except ImportError:
-    from .utils import convert_video
-
 st.markdown("----------------------------")
 st.markdown("### Инструкция по применению")
 st.text("1. Выбрать размер модели для применения (см. подсказку)")
