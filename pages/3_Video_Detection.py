@@ -15,7 +15,8 @@ from PIL import Image
 
 def convert_video(input_path, output_path):
     cap = cv2.VideoCapture(input_path)
-    fourcc = cv2.VideoWriter_fourcc(*"H264")
+    #fourcc = cv2.VideoWriter_fourcc(*"H264")
+    fourcc = cv2.VideoWriter_fourcc(*'VP90')
     fps = cap.get(cv2.CAP_PROP_FPS)
     st.write("frame_params")
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -140,6 +141,6 @@ if uploaded_file:
         )
     except FileNotFoundError:
         st.video(
-            f"{execution_path}video_detected.mp4"
+            f"./video/video_detected.mp4"
         )
 
