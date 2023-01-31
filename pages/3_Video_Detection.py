@@ -131,6 +131,7 @@ if uploaded_file:
     st.write(os.listdir("./video/"))
     st.write(os.listdir(execution_path))
     st.write(os.listdir("./"))
+    st.write(os.listdir("./pages/"))
     st.markdown("### Видео с детектированными объектами")
 
     try:
