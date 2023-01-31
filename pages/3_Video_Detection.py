@@ -130,11 +130,12 @@ if uploaded_file:
     )
     st.write(os.listdir("./video/"))
     st.write(os.listdir(execution_path))
+    st.write(os.listdir("./"))
     st.markdown("### Видео с детектированными объектами")
 
     try:
         st.video(
-            f"{execution_path}video_detected_h264.mp4"
+            "./video/video_detected_h264.mp4"
         )
     except FileNotFoundError:
         st.video(
