@@ -12,14 +12,14 @@ from imageai.Detection import VideoObjectDetection
 from pathlib import Path
 from PIL import Image
 
+st.text(os.listdir("../"))
+st.title("Детекция на видео 📹")
+st.text(os.listdir("./"))
+
 try:
     from utils import convert_video
 except ImportError:
     from ..utils import convert_video
-
-st.title("Детекция на видео 📹")
-st.text(os.listdir("../"))
-st.text(os.listdir("./"))
 
 st.markdown("----------------------------")
 st.markdown("### Инструкция по применению")
