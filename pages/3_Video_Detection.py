@@ -11,7 +11,11 @@ import matplotlib.pyplot as plt
 from imageai.Detection import VideoObjectDetection
 from pathlib import Path
 from PIL import Image
-#from utils import convert_video
+
+try:
+    from .utils import convert_video
+except ImportError:
+    from utils import convert_video
 
 st.title("Детекция на видео 📹")
 st.text(os.listdir("../"))
