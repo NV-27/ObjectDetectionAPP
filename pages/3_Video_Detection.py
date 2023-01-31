@@ -3,6 +3,7 @@ import sys
 import cv2
 import base64
 import tempfile
+sys.path.append("../")
 
 import numpy as np
 import streamlit as st
@@ -10,6 +11,7 @@ import matplotlib.pyplot as plt
 from imageai.Detection import VideoObjectDetection
 from pathlib import Path
 from PIL import Image
+from utils import convert_video
 
 
 st.title("Детекция на видео 📹")
@@ -74,21 +76,26 @@ if uploaded_file:
     if model_size == "TinyYOLOv3":
         detector.setModelTypeAsTinyYOLOv3()
         detector.setModelPath(
-            "./models/tiny-yolov3.pt"
+            "/Users/nv27/Documents/Lovely ML/courses/DL School, part I/ObjectDetectionAPP/models/tiny-yolov3.pt"
         )
     elif model_size == "YOLOv3":
-        detector.setModelTypeAsYOLOv3()
-        detector.setModelPath(
-            "./models/yolov3.pt"
-        )
+        st.write("В бесплатной версии приложения этот тип модели не поддерживается 🙂")
+        #detector.setModelTypeAsYOLOv3()
+        #detector.setModelPath(
+        #    "./models/yolov3.pt"
+        #)
     elif model_size == "RetinaNet":
-        detector.setModelTypeAsRetinaNet()
-        detector.setModelPath(
-            "./models/retinanet_resnet50_fpn_coco-eeacb38b.pth"
-        )
-    detector.loadModel()
+        st.write("В бесплатной версии приложения этот тип модели не поддерживается 🙂")
+        #detector.setModelTypeAsRetinaNet()
+        #detector.setModelPath(
+        #    "./models/retinanet_resnet50_fpn_coco-eeacb38b.pth"
+        #)
+    try:
+        detector.loadModel()
+    except ValueError:
+        st.write("Для детекции объектов нужно выбрать модель TinyYOLOv3.")
+
     execution_path = "./video/"
-    
     detector.detectObjectsFromVideo(
         input_file_path=os.path.join(execution_path, "video_for_detect.mp4"),
         output_file_path=os.path.join(execution_path, f"video_detected"),
@@ -97,8 +104,11 @@ if uploaded_file:
         display_percentage_probability=True,
         log_progress=True,
     )
-
+    convert_video(
+        input_path=os.path.join(execution_path, f"video_detected.mp4"),
+        output_path=os.path.join(execution_path, f"video_detected_h264.mp4"),
+    )
     st.markdown("### Видео с детектированными объектами")
     st.video(
-        f"{execution_path}/video_detected.mp4"
+        f"{execution_path}/video_detected_h264.mp4"
     )
