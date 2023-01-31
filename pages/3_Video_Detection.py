@@ -123,7 +123,7 @@ if uploaded_file:
         input_path=os.path.join(execution_path, f"video_detected.mp4"),
         output_path=os.path.join(execution_path, f"video_detected_h264.mp4"),
     )
-    stwrite(os.listdir("./video/"))
+    st.write(os.listdir("./video/"))
     st.markdown("### Видео с детектированными объектами")
     st.video(
         f"{execution_path}video_detected_h264.mp4"
