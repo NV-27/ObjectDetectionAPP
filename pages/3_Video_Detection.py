@@ -95,7 +95,7 @@ if uploaded_file:
     if model_size == "TinyYOLOv3":
         detector.setModelTypeAsTinyYOLOv3()
         detector.setModelPath(
-            "/Users/nv27/Documents/Lovely ML/courses/DL School, part I/ObjectDetectionAPP/models/tiny-yolov3.pt"
+            "./models/tiny-yolov3.pt"
         )
     elif model_size == "YOLOv3":
         st.write("В бесплатной версии приложения этот тип модели не поддерживается 🙂")
