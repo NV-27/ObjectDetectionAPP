@@ -7,7 +7,6 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 from PIL import Image
-#from utils import get_model
 
 st.title("Детекция на изображениях 🖼️")
 
